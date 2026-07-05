@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copilot Studio Multi-Agent POC — Employee Support Bot</title>
+<style>
+  :root{ --g1:#0F6CBD; --g2:#8764B8; --g3:#D83B9A; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:#F3F2F1;color:var(--text);}
+  .hero{background:linear-gradient(120deg,var(--g1) 0%,var(--g2) 50%,var(--g3) 100%);color:#fff;padding:44px 24px 52px;text-align:center;}
+  .hero .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#f0d9ec;font-weight:700;}
+  .hero h1{font-size:25px;margin:10px 0;}
+  .hero p{font-size:13.5px;color:#f5e9f2;max-width:660px;margin:0 auto;line-height:1.6;}
+  .back-link{display:inline-block;margin-top:16px;color:#fff;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 16px;border-radius:20px;font-size:12px;text-decoration:none;}
+
+  .container{max-width:1000px;margin:-26px auto 0;padding:0 24px 60px;}
+
+  .mesh{background:#fff;border:1px solid var(--border);border-radius:12px;padding:26px;box-shadow:0 6px 18px rgba(0,0,0,.06);margin-bottom:24px;}
+  .parent-node{background:linear-gradient(90deg,var(--g1),var(--g2));color:#fff;border-radius:8px;padding:12px 16px;text-align:center;font-weight:700;font-size:13px;max-width:300px;margin:0 auto 16px;}
+  .agent-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .agent-box{border:2px solid var(--border);border-radius:8px;padding:12px 16px;text-align:center;font-size:12px;min-width:140px;}
+  .agent-box.hr{border-color:#0F6CBD;background:#EFF6FC;}
+  .agent-box.it{border-color:#8764B8;background:#F7F2FC;}
+  .agent-box.training{border-color:#D83B9A;background:#FCEFF6;}
+
+  .compare{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+  .compare-card{flex:1;min-width:260px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .compare-card.bad{border-left:4px solid #A80000;}
+  .compare-card.good{border-left:4px solid #107C10;}
+  .compare-card h4{font-size:12.5px;margin:0 0 8px;}
+  .compare-card ul{margin:0;padding-left:18px;font-size:11.5px;color:var(--text-secondary);line-height:1.7;}
+
+  .links-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px;}
+  .link-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .link-card .t{font-size:13px;font-weight:700;}
+  .link-card .d{font-size:11px;color:var(--text-secondary);margin-top:4px;}
+
+  .footer{text-align:center;margin-top:30px;font-size:12px;color:var(--text-secondary);}
+  .footer a{color:var(--g1);}
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="eyebrow">Copilot Studio · Multi-Agent Orchestration POC</div>
+    <h1>Copilot Studio Multi-Agent POC — Employee Support Bot</h1>
+    <p>A fully documented, step-by-step POC for building a Multi-Agent System in Copilot Studio. One orchestrator agent intelligently routes employee queries to three specialist agents — HR, IT, and Training — with zero manual routing by the user.</p>
+    <a class="back-link" href="https://rahul7387.github.io/power-platform-portfolio-hub/">← Back to Portfolio Hub</a>
+  </div>
+
+  <div class="container">
+
+    <div class="mesh">
+      <div class="parent-node">🎯 Employee Support Bot (Orchestrator)</div>
+      <div class="agent-row">
+        <div class="agent-box hr"><b>HR Agent</b><br>Policy, benefits, leave</div>
+        <div class="agent-box it"><b>IT Agent</b><br>Access, hardware, software</div>
+        <div class="agent-box training"><b>Training Agent</b><br>Courses, certifications, LMS</div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-card bad">
+        <h4>❌ Without Multi-Agent</h4>
+        <ul><li>One massive agent with 50+ topics</li><li>Degraded routing above 30–40 actions</li><li>Single team manages everything</li><li>Hard to test and debug</li></ul>
+      </div>
+      <div class="compare-card good">
+        <h4>✔ With Multi-Agent</h4>
+        <ul><li>Modular, focused agents (5–10 topics each)</li><li>Clean separation of concerns</li><li>Teams own their agent independently</li><li>Activity Map shows the exact orchestration chain</li></ul>
+      </div>
+    </div>
+
+    <div class="links-grid">
+      <a class="link-card" href="./README.md#-architecture"><div class="t">🏗 Architecture</div><div class="d">Orchestrator + specialist agent design</div></a>
+      <a class="link-card" href="./agents/orchestrator"><div class="t">🎯 Orchestrator Agent</div><div class="d">Intent routing logic</div></a>
+      <a class="link-card" href="./agents/hr-agent"><div class="t">🧑‍💼 HR Agent</div><div class="d">Policy &amp; benefits specialist</div></a>
+      <a class="link-card" href="./agents/it-agent"><div class="t">💻 IT Agent</div><div class="d">Access &amp; hardware specialist</div></a>
+      <a class="link-card" href="./agents/training-agent"><div class="t">🎓 Training Agent</div><div class="d">Courses &amp; certifications specialist</div></a>
+      <a class="link-card" href="./docs/architecture.md"><div class="t">📐 Architecture Doc</div><div class="d">Full technical design</div></a>
+      <a class="link-card" href="./docs/testing-guide.md"><div class="t">🧪 Testing Guide</div><div class="d">How to validate routing end-to-end</div></a>
+      <a class="link-card" href="./docs/troubleshooting.md"><div class="t">🔧 Troubleshooting</div><div class="d">Common issues &amp; fixes</div></a>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/Rahul7387/copilot-multiagent-poc">View source on GitHub</a> ·
+      <a href="https://rahul7387.github.io/power-platform-portfolio-hub/">Back to Portfolio Hub</a> ·
+      Companion repo: <a href="https://rahul7387.github.io/copilot-studio-agent-mastery-projects/projects/07-expert-multi-agent-orchestration/index.html">MultiAgentMesh (Expert Project)</a>
+    </div>
+  </div>
+
+</body>
+</html>
